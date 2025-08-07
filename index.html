@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đồng hồ trên ảnh</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      display: inline-block;
+    }
+
+    img {
+      width: 500px;
+      border-radius: 10px;
+    }
+
+    .clock {
+      position: absolute;
+      top: 124px;
+      left: 50%;
+      transform: translateX(-50%) rotate(5deg); /* nghiêng 5 độ bên phải */
+      background-color: #182A43; /* Màu nền div */
+      color: #2ecc71; 
+      padding: 5px 12px;
+      /* background-color: rgba(0, 0, 0, 0.7);
+      color: white; */
+      font-family: monospace;
+      font-size: 22px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-d91c-61f7-b68c-0fa9e7e45114/raw?se=2025-08-07T09%3A41%3A39Z&sp=r&sv=2024-08-04&sr=b&scid=207fbcf5-366b-54dd-a0d4-f69a1ae0aa06&skoid=c953efd6-2ae8-41b4-a6d6-34b1475ac07c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-06T19%3A05%3A19Z&ske=2025-08-07T19%3A05%3A19Z&sks=b&skv=2024-08-04&sig=nWtYDsvwWHOqOBDnDX6y3BGlektkYzV7MLhttQlxmiY%3D" alt="Ảnh có đồng hồ">
+    <div class="clock" id="clock">--:--:--</div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
